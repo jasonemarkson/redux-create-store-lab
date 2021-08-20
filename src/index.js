@@ -8,7 +8,7 @@ function createStore(candyReducer) {
     render()
   }
 
-  function getState(state) {
+  function getState() {
     return state;
   }
 
@@ -22,6 +22,7 @@ function candyReducer(state = [], action) {
   switch (action.type) {
     case 'ADD_CANDY':
       return [...state, action.candy];
+      // we'll make a shallow copy of the state, add this to the state and send it back up to the store to update it 
     default:
       return state;
   }
@@ -37,6 +38,6 @@ function render() {
 };
 
 // Use your createStore function and the functions provided here to create a store.
-let store = createStore()
+let store = createStore(candyReducer)
 // Once the store is created, call an initial dispatch.
 store.dispatch({type: '@@INIT'})
